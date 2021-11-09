@@ -1,0 +1,23 @@
+.meter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: var(--blue-medium);
+}
+
+.meter .label {
+  color: var(--blue-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.meter .value {
+  color: var(--blue-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
