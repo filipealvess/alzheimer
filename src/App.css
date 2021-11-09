@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+button { cursor: pointer; }
+
+html {
+  --white: #FCFCFC;
+  --yellow: #FDA215;
+  --blue-dark: #162938;
+  --blue-medium: #BDCFDA;
+  --blue-light: #DFE6EC;
+
+  font-size: 10px;
+}
+
+body {
+  background-color: var(--blue-dark);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 1fr;
+  gap: 10px;
+  justify-content: center;
+}
