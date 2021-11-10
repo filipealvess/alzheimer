@@ -21,6 +21,7 @@ html {
 }
 
 body {
+  padding: 25px 10px;
   background-color: var(--blue-dark);
 }
 
@@ -30,4 +31,31 @@ body {
   grid-template-rows: 1fr;
   gap: 10px;
   justify-content: center;
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 9.5px;
+  }
+
+  .metrics {
+    grid-template-columns: 170px 170px;
+  }
+}
+
+@media (max-width: 400px) {
+  .metrics {
+    grid-template-columns: 280px;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 9px;
+  }
+
+  .metrics {
+    grid-template-columns: 240px;
+  }
 }

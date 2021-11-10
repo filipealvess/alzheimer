@@ -6,3 +6,25 @@
   justify-content: center;
   margin: 0 auto 70px;
 }
+
+@media (max-width: 480px) {
+  .cards {
+    grid-template-columns: 60px 60px 60px 60px 60px;
+    grid-template-rows: 60px 60px 60px 60px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cards {
+    grid-template-columns: 60px 60px 60px 60px;
+    grid-template-rows: 60px 60px 60px 60px 60px;
+    margin: 0 auto 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cards {
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px;
+  }
+}

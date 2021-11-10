@@ -21,3 +21,9 @@
   font-size: 1.8rem;
   font-weight: 600;
 }
+
+@media (max-width: 480px) {
+  .meter {
+    padding: 10px 15px;
+  }
+}
