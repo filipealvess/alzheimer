@@ -4,17 +4,11 @@ import './App.css';
 import Logo from './components/Logo';
 import Cards from './components/Cards';
 import Meter from './components/Meter';
-import generate from './controllers/numbers';
 
 export default function App() {
-  let [numbers, setNumbers] = useState([]);
   let [formatedTime, setFormatedTime] = useState('0:00');
   let [moves, setMoves] = useState(0);
   let timeInSeconds = 0;
-
-  useEffect(() => {
-    setNumbers(generate());
-  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -34,7 +28,7 @@ export default function App() {
       </header>
 
       <main>
-        <Cards numbers={numbers} />
+        <Cards />
       </main>
 
       <footer className="metrics">
