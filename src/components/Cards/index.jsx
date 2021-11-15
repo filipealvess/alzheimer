@@ -4,7 +4,7 @@ import Card from '../Card';
 import './style.css';
 import generate from '../../controllers/numbers';
 
-export default function Cards() {
+export default function Cards({ incrementMoves }) {
   let [numbers, setNumbers] = useState([]);
   let [selectedCard, setSelectedCard] = useState(null);
 
@@ -56,6 +56,7 @@ export default function Cards() {
 
     if (selectedCard === null) {
       setSelectedCard(card);
+      incrementMoves();
       return;
     }
 
@@ -64,9 +65,11 @@ export default function Cards() {
     if (selectedCard.number === card.number) {
       markCardAsFinded(card);
       setSelectedCard(null);
+      incrementMoves();
       return;
     }
-
+    
+    incrementMoves();
     hideNumbers();
   }
 

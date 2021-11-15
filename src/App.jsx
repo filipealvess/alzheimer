@@ -21,6 +21,10 @@ export default function App() {
     }, 1000);
   }, [timeInSeconds]);
 
+  function incrementMoves() {
+    setMoves(moves + 1);
+  }
+
   return (
     <>
       <header>
@@ -28,7 +32,7 @@ export default function App() {
       </header>
 
       <main>
-        <Cards />
+        <Cards incrementMoves={incrementMoves} />
       </main>
 
       <footer className="metrics">
