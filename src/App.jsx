@@ -26,7 +26,7 @@ export default function App() {
     finish && clearInterval(timer);
 
     return () => clearInterval(timer);
-  }, [finish]);
+  }, [finish, timeInSeconds]);
 
   function incrementMoves() {
     setMoves(moves + 1);
