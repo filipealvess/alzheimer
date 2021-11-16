@@ -4,44 +4,40 @@ import Card from '../Card';
 import './style.css';
 import generate from '../../controllers/numbers';
 
-export default function Cards({ incrementMoves }) {
+export default function Cards({ incrementMoves, finishGame, restart }) {
   let [numbers, setNumbers] = useState([]);
   let [selectedCard, setSelectedCard] = useState(null);
 
   useEffect(() => {
-    const newNumbers = generate().map((number, index) => ({
-      id: index,
-      number,
-      visible: false,
-      finded: false
-    }));
-
-    setNumbers(newNumbers);
+    generateRandomNumbers();
   }, []);
 
-  function hideNumbers() {
-    setTimeout(() => {
-      setSelectedCard(null);
-      setNumbers(
-        numbers.map(number => {
-          const cardWasFound = number.visible && number.finded === false;
-          
-          number.visible = cardWasFound ? false : number.visible;
+  useEffect(() => {
+    if (restart) {
+      generateRandomNumbers();
+    }
+  }, [restart]);
 
-          return number;
-        })
-      );
-    }, 500);
+  function generateRandomNumbers() {
+    setNumbers(
+      generate().map((number, index) => ({
+        id: index,
+        number,
+        visible: false,
+        found: false
+      }))
+    );
   }
 
-  function markCardAsFinded(card) {
+  function hideNumbers() {
+    setSelectedCard(null);
+
     setTimeout(() => {
       setNumbers(
         numbers.map(number => {
-          const { id } = number;
-          const cardWasFound = (selectedCard.id === id) || (card.id === id);
+          const cardWasFound = number.visible && number.found === false;
 
-          number.finded = cardWasFound ? true : number.finded;
+          number.visible = cardWasFound ? false : number.visible;
 
           return number;
         })
@@ -49,10 +45,38 @@ export default function Cards({ incrementMoves }) {
     }, 300);
   }
 
+  function markCardAsFound(card) {
+    setTimeout(() => {
+      setNumbers(
+        numbers.map(number => {
+          const { id } = number;
+          const cardWasFound = (selectedCard.id === id) || (card.id === id);
+
+          number.found = cardWasFound ? true : number.found;
+
+          return number;
+        })
+      );
+
+      const numbersFound = numbers.filter(({ found }) => found);
+      const allNumbersWereFound = numbersFound.length === numbers.length;
+
+      if (allNumbersWereFound) {
+        finishGame();
+        setNumbers(
+          numbers.map(number => {
+            number.visible = false;
+            return number;
+          })
+        );
+      }
+    }, 100);
+  }
+
   function handleSelectCard(id) {
     const card = numbers.filter(number => number.id === id)[0];
 
-    if (card.finded) return;
+    if (card.found) return;
 
     if (selectedCard === null) {
       setSelectedCard(card);
@@ -63,12 +87,12 @@ export default function Cards({ incrementMoves }) {
     if (selectedCard.id === id) return;
 
     if (selectedCard.number === card.number) {
-      markCardAsFinded(card);
+      markCardAsFound(card);
       setSelectedCard(null);
       incrementMoves();
       return;
     }
-    
+
     incrementMoves();
     hideNumbers();
   }
