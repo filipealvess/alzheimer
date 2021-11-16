@@ -3,13 +3,13 @@ import React from 'react';
 import './style.css';
 
 export default function Card({ card, handleCardClick }) {
-  const { number, id, visible, finded } = card;
+  const { number, id, visible, found } = card;
 
   function getCardClasses() {
     const classes = [];
   
     visible && classes.push('visible');
-    finded && classes.push('finded');
+    found && classes.push('found');
 
     return classes.join(' ');
   }
