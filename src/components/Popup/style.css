@@ -1,0 +1,54 @@
+.popup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  width: 90%;
+  max-width: 600px;
+  padding: 40px 60px;
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.popup-content > h2 {
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.popup-content > p {
+  margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.game-metrics {
+  margin-bottom: 30px;
+}
+
+.game-metrics .meter + .meter {
+  margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .popup-content {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 330px) {
+  .popup-content {
+    padding: 25px 20px;
+  }
+}
