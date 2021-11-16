@@ -1,4 +1,4 @@
-function generate(amount = 20) {
+export default function generate(amount = 20) {
   const numbers = [];
   const halfAmount = amount / 2;
 
@@ -29,5 +29,3 @@ function shuffle(array) {
 
   return numbers;
 }
-
-module.exports = generate;
